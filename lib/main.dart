@@ -6,6 +6,7 @@ import 'package:flutter_application_1/Pages/MarinePage.dart';
 import 'package:get/get.dart';
 
 void main() {
+  FakeData();
   runApp(const MyApp());
 }
 
@@ -14,12 +15,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    FakeData();
     return GetMaterialApp(
       title: 'Flutter Demo',
       defaultTransition: Transition.native,
       translations: LanguageTokens(),
-      locale: const Locale('tr'),
+      locale: const Locale('en'),
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
@@ -38,7 +38,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  bool switchValue = true;
+  bool switchValue = false;
   int selectedindex = 0;
   List<Widget> tabList = [];
   @override
@@ -101,7 +101,7 @@ class _MyHomePageState extends State<MyHomePage> {
       bottomNavigationBar: BottomNavigationBar(
         items: [
           BottomNavigationBarItem(
-            icon: const Icon(Icons.person),
+            icon: const Icon(Icons.people_sharp),
             label: "crew".tr,
             backgroundColor: Colors.grey,
           ),

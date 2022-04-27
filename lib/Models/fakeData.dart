@@ -2,41 +2,41 @@
 
 import 'package:flutter_application_1/Models/crewModel.dart';
 
-List<CrewModel> crewModel = <CrewModel>[];
+List<CrewModel> crewList = <CrewModel>[];
 
 class FakeData {
   FakeData() {
-    crewModel.add(CrewModel(
+    crewList.add(CrewModel(
         firstName: "Sinan",
         lastName: "arikan",
         title: "Engineer",
         nationality: "TR",
         certificates: [
-          Certificates("certificateDate", "certificateName"),
-          Certificates("certificateDate", "certificateName"),
-          Certificates("certificateDate", "certificateName")
+          Certificates("01.06.2018", "Sertifika 1"),
+          Certificates("01.02.01.06.2020", "Sertifika 2"),
         ]));
 
-    crewModel.add(CrewModel(
+    crewList.add(CrewModel(
         firstName: "Sefa",
-        lastName: "arikan",
-        title: "Engineer",
-        nationality: "TR",
+        lastName: "Arsay",
+        title: "Architect",
+        nationality: "EN",
         certificates: [
-          Certificates("certificateDate", "certificateName"),
-          Certificates("certificateDate", "certificateName"),
-          Certificates("certificateDate", "certificateName")
+          Certificates("01.06.2018", "Sertifika 1"),
+          Certificates("01.02.01.06.2020", "Sertifika 2"),
+          Certificates("01.06.2018", "Sertifika 3"),
+          Certificates("01.06.2022", "Sertifika 4"),
         ]));
 
-    crewModel.add(CrewModel(
+    crewList.add(CrewModel(
         firstName: "Merve",
-        lastName: "arikan",
-        title: "Engineer",
-        nationality: "TR",
+        lastName: "Yolcu",
+        title: "Teacher",
+        nationality: "AU",
         certificates: [
-          Certificates("certificateDate", "certificateName"),
-          Certificates("certificateDate", "certificateName"),
-          Certificates("certificateDate", "certificateName")
+          Certificates("01.06.2018", "Sertifika 1"),
+          Certificates("01.02.2013", "Sertifika 2"),
+          Certificates("01.06.2020", "Sertifika 3")
         ]));
   }
 }
