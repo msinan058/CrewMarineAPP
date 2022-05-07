@@ -1,5 +1,7 @@
 // ignore_for_file: file_names
 
+import 'package:flutter_application_1/Models/crewCertificate.dart';
+
 class CrewModel {
   CrewModel(
       {this.title,
@@ -14,11 +16,4 @@ class CrewModel {
   String? nationality;
 
   List<Certificates>? certificates;
-}
-
-class Certificates {
-  Certificates(this.certificateDate, this.certificateName);
-
-  String certificateName;
-  String certificateDate;
 }

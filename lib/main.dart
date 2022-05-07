@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Controllers/Languages.dart';
+import 'package:flutter_application_1/Controllers/tabController.dart';
+import 'package:flutter_application_1/Core/routes.dart';
 import 'package:flutter_application_1/Models/fakeData.dart';
 import 'package:flutter_application_1/Pages/CrewPage.dart';
 import 'package:flutter_application_1/Pages/MarinePage.dart';
@@ -16,14 +18,15 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+      initialRoute: "/",
+      getPages: appRoutes(),
       title: 'Flutter Demo',
-      defaultTransition: Transition.native,
+      defaultTransition: Transition.rightToLeftWithFade,
       translations: LanguageTokens(),
       locale: const Locale('en'),
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'Digital Ocean'),
     );
   }
 }
@@ -40,12 +43,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   bool switchValue = false;
   int selectedindex = 0;
-  List<Widget> tabList = [];
-  @override
-  void initState() {
-    tabList = [const CrewPage(), const MarinePage()];
-    super.initState();
-  }
+  final tabController = Get.put(TAbController());
 
   String get digitalOcean =>
       "https://www.digitall-ocean.com/img/digitall-ocean-logo.png";
@@ -74,9 +72,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ListTile(
               title: Text('crew'.tr),
               onTap: () {
-                setState(() {
-                  selectedindex = 0;
-                });
+                tabController.selectTab(0);
                 Get.back();
               },
             ),
@@ -113,12 +109,15 @@ class _MyHomePageState extends State<MyHomePage> {
         type: BottomNavigationBarType.shifting,
         currentIndex: selectedindex,
         onTap: (index) {
-          setState(() {
-            selectedindex = index;
-          });
+          tabController.selectTab(index);
         },
       ),
-      body: tabList[selectedindex],
+      body: Obx(
+        () => IndexedStack(
+          index: tabController.index.value,
+          children: const [CrewPage(), MarinePage()],
+        ),
+      ),
       appBar: AppBar(
         title: Text(widget.title),
       ),
